@@ -1,21 +1,22 @@
 # Docker image for ASK and AWS CLI 
 
-The purpose of this container is to be able to use the [Amazon ASK CLI (Alexa Skills Kit)](https://developer.amazon.com/docs/smapi/ask-cli-intro.html#alexa-skills-kit-command-line-interface-ask-cli) in a Docker container in Devops pipelines.
+The purpose of this container is to be able to use the [Amazon ASK CLI](https://developer.amazon.com/docs/smapi/ask-cli-intro.html#alexa-skills-kit-command-line-interface-ask-cli) and [Amazon AWS CLI](https://docs.aws.amazon.com/cli/index.html) in a Docker container in DevOps pipelines.
 
 **NOTE:** This is a fork from [martindsouza](https://github.com/martindsouza/docker-amazon-ask-cli) image with these changes:
 1. Image base is the latest LTS version instead of the current version of Node.js.
 2. Added ASK_CLI_VERSION build argument in order to be able to work with different ASK CLI versions.
 3. Added git and zip packages that ASK CLI will use in its commands.
 4. Added Bespoken.
-5. Remove volumes. I think it is not necessary in a simple docker image that I will use in my devops pipelines. In addition, you can use '-v' argument in `docker run` command whenever you want.
+5. Remove volumes. I think it is not necessary in a simple docker image that I will use in my DevOps pipelines. In addition, you can use '-v' argument in `docker run` command whenever you want.
 
 ## ASK Config
 
-Before running this example ensure that you've registered for an [Alexa Developer](https://developer.amazon.com/alexa) account.
+You have to take into account that you have to have an [Alexa Developer](https://developer.amazon.com/alexa) account to be able to work with this container.
 
 ### ask configure
 
-Running `ask configure` in v2 and `ask init` in v1 in the container will ask you a set of questions to create the Alexa credentials. Follow all the steps explained in the official documentation[https://developer.amazon.com/en-US/docs/alexa/smapi/manage-credentials-with-ask-cli.html].
+Running `ask configure` in v2 and `ask init` in v1 in the container will ask you a set of questions to create the Alexa credentials. 
+Follow all the steps explained in the official documentation[https://developer.amazon.com/en-US/docs/alexa/smapi/manage-credentials-with-ask-cli.html].
 
 In either case ensure that you pass in `-v $(pwd)/ask-config:/home/node/.ask \` (where `$(pwd)/ask-config` is a location on your host machine) as an option when running the container to preserve the ASK configuration.
 
@@ -39,13 +40,14 @@ If you are using Alexa environment variable you have to add a new profile called
 
 ## AWS Config
 
-If you plan to use [Lambda](https://aws.amazon.com/lambda/) you'll need to configure the AWS CLI. To simplify. You can configure it multiple ways.
+If you plan to use [AWS Lambda](https://aws.amazon.com/lambda/) you'll need to configure the AWS CLI. To simplify. You can configure it multiple ways.
 
 In either case ensure that you pass in `-v $(pwd)/aws-config:/home/node/.aws \` (where `$(pwd)/aws-config` is a location on your host machine) as an option when running the container to preserve the AWS configuration.
 
 ### aws configure
 
-Running `aws configure` in the container will ask you a set of questions to create the AWS credentials
+For general use, the `aws configure` command is the fastest way to set up your AWS CLI installation.
+When you enter this command, the AWS CLI prompts you for four pieces of information (access key, secret access key, AWS Region, and output format)
 
 ### Setting credentials using environment variables
 
@@ -59,45 +61,45 @@ For more information about the [AWS environment variables](https://docs.aws.amaz
 
 ## Usage
 
-Get the latest version of the container: `docker pull xavidop/alexa-ask-aws-cli`
+Get the latest version of the container:
 
 ```bash
   # Get image
   docker pull xavidop/alexa-ask-aws-cli
 ```
 
-They're two ways to use the `ask` cli for this container which are covered below.
+They're two ways to use the `ask` cli for this container described below.
 
-### Run One Command
+### Run ASK CLI Commands
 
-In this mode the container will start, you run your `ask` command, then the container is stopped and deleted. _Don't worry your Docker image is still kept._
+This is an example that shows up how to execute an `ask` command. After this command is executed, the container will stop.
 
 ```bash
 docker run -it --rm \
   -v $(pwd)/ask-config:/home/node/.ask \
+  -v $(pwd)/ask-config:/home/node/.aws \
+  -v $(pwd)/ask-config:/home/node/.bst \
   -v $(pwd)/hello-world:/home/node/app \
   xavidop/alexa-ask-aws-cli:latest \
   ask init -l
 ```
 
-### Run `bash`, then run `ask`
+### Run ASK CLI Commands interactively
 
-In this mode, the container will start, you can then run the container's bash, and the container will stop and delete only once you `exit`.
+In this example, the container will start directly with the bash console and then you can execute there all the ASK CLI commands you want.
 
 ```bash
 docker run -it --rm \
   -v $(pwd)/ask-config:/home/node/.ask \
+  -v $(pwd)/ask-config:/home/node/.aws \
+  -v $(pwd)/ask-config:/home/node/.bst \
   -v $(pwd)/app/HelloWorld:/home/node/app \
   xavidop/alexa-ask-aws-cli:latest \
   bash
 
-# You'll be prompted with:
-# bash-4.3$
-#
-# Type: exit  to end and terminate the container
 ```
 
-## Developers
+## Build and push the image
 
 For ASK CLI v1:
 ```bash
