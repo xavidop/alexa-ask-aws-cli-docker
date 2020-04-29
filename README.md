@@ -16,7 +16,7 @@ You have to take into account that you have to have an [Alexa Developer](https:/
 ### ask configure
 
 Running `ask configure` in v2 and `ask init` in v1 in the container will ask you a set of questions to create the Alexa credentials. 
-Follow all the steps explained in the official documentation[https://developer.amazon.com/en-US/docs/alexa/smapi/manage-credentials-with-ask-cli.html].
+Follow all the steps explained in (the official documentation)[https://developer.amazon.com/en-US/docs/alexa/smapi/manage-credentials-with-ask-cli.html].
 
 In either case ensure that you pass in `-v $(pwd)/ask-config:/home/node/.ask \` (where `$(pwd)/ask-config` is a location on your host machine) as an option when running the container to preserve the ASK configuration.
 
