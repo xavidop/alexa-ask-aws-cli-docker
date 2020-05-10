@@ -13,6 +13,8 @@ ENV TZ="GMT" \
 
 # Required pre-reqs for ask cli
 RUN apk add --update \
+  jq \
+  expect \
   python \
   make \
   bash \

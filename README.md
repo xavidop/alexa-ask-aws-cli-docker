@@ -7,7 +7,8 @@ The purpose of this container is to be able to use the [Amazon ASK CLI](https://
 2. Added ASK_CLI_VERSION build argument in order to be able to work with different ASK CLI versions.
 3. Added git and zip packages that ASK CLI will use in its commands.
 4. Added Bespoken.
-5. Remove volumes. I think it is not necessary in a simple docker image that I will use in my DevOps pipelines. In addition, you can use '-v' argument in `docker run` command whenever you want.
+5. Added jq and expect cli commands.
+6. Remove volumes. I think it is not necessary in a simple docker image that I will use in my DevOps pipelines. In addition, you can use '-v' argument in `docker run` command whenever you want.
 
 ## ASK Config
 
@@ -125,7 +126,7 @@ docker push xavidop/alexa-ask-aws-cli
 
 Currently there are two versions available:
 * 1.0: this image is running the latest version of ASK CLI v1 (1.7.23)
-* 2.0: this image is running the latest version of ASK CLI v2 (2.1.1)
+* 2.0: this image is running the latest version of ASK CLI v2 (2.6.0)
 
 These versions are available in my [DockerHub profile](https://hub.docker.com/r/xavidop/alexa-ask-aws-cli/tags)
 
