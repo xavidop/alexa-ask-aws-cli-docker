@@ -66,7 +66,7 @@ Get the latest version of the container:
 
 ```bash
   # Get image
-  docker pull xavidop/alexa-ask-aws-cli
+  docker pull xavidop/alexa-ask-aws-cli:2.0
 ```
 
 They're two ways to use the `ask` cli for this container described below.
@@ -81,7 +81,7 @@ docker run -it --rm \
   -v $(pwd)/ask-config:/home/node/.aws \
   -v $(pwd)/ask-config:/home/node/.bst \
   -v $(pwd)/hello-world:/home/node/app \
-  xavidop/alexa-ask-aws-cli:latest \
+  xavidop/alexa-ask-aws-cli:2.0 \
   ask init -l
 ```
 
@@ -95,7 +95,7 @@ docker run -it --rm \
   -v $(pwd)/ask-config:/home/node/.aws \
   -v $(pwd)/ask-config:/home/node/.bst \
   -v $(pwd)/app/HelloWorld:/home/node/app \
-  xavidop/alexa-ask-aws-cli:latest \
+  xavidop/alexa-ask-aws-cli:2.0 \
   bash
 
 ```
@@ -114,7 +114,7 @@ docker push xavidop/alexa-ask-aws-cli:2.0
 
 For ASK CLI v2:
 ```bash
-docker build --build-arg ASK_CLI_VERSION=2.11.2 -t xavidop/alexa-ask-aws-cli:2.0 .
+docker build --build-arg ASK_CLI_VERSION=2.12.0 -t xavidop/alexa-ask-aws-cli:2.0 .
 
 # Pushing to Docker Hub
 # Note: not required since I have a build hook linked to the repo
@@ -126,7 +126,7 @@ docker push xavidop/alexa-ask-aws-cli
 
 Currently there are two versions available:
 * 1.0: this image is running the latest version of ASK CLI v1 (1.7.23)
-* 2.0: this image is running the latest version of ASK CLI v2 (2.11.2)
+* 2.0: this image is running the latest version of ASK CLI v2 (2.12.0)
 
 These versions are available in my [DockerHub profile](https://hub.docker.com/r/xavidop/alexa-ask-aws-cli/tags)
 
