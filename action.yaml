@@ -1,0 +1,13 @@
+# action.yml
+name: 'Alexa ASK AWS CLI Action'
+description: 'Github Action using Docker image for ASK and AWS CLI '
+inputs:
+  ask-cli-version:  # id of input
+    description: 'Version od the ASK CLI'
+    required: true
+    default: '2.13.0'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.ask-cli-version }}
