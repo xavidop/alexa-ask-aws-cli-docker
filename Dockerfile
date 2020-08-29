@@ -1,7 +1,7 @@
 # Original source from https://hub.docker.com/_/node/
 FROM node:lts-alpine
 LABEL maintainer="Xavier Portilla Edo <xavierportillaedo@gmail.com>"
-ARG ASK_CLI_VERSION=2.1.1
+ARG ASK_CLI_VERSION=2.13.0
 
 ENV CLI_VERSION @${ASK_CLI_VERSION}
 
