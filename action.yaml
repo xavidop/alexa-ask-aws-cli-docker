@@ -15,4 +15,4 @@ outputs:
     description: 'The result of the command'
 runs:
   using: 'docker'
-  image: 'Dockerfile_action'
+  image: 'Dockerfile'
