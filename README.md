@@ -144,7 +144,7 @@ You can use the following example as a way to start:
 ```yaml
 
   - name: Alexa ASK AWS CLI Action
-    uses: xavidop/alexa-ask-aws-cli-docker@v1.0.3
+    uses: xavidop/alexa-ask-aws-cli-docker@v1.0.4
     id: command
     with:
       command: 'ask --version'
