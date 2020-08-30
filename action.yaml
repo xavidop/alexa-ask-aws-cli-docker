@@ -6,7 +6,7 @@ branding:
   icon: 'activity'  
   color: 'blue'
 inputs:
-  exec:  # id of input
+  command:  # id of input
     description: 'Command to execute'
     required: true
     default: 'ask --version'
@@ -16,3 +16,5 @@ outputs:
 runs:
   using: 'docker'
   image: './.github/action/Dockerfile'
+  args:
+    - ${{ inputs.command }}
