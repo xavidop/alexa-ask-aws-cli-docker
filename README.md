@@ -138,7 +138,7 @@ These versions are available in my [DockerHub profile](https://hub.docker.com/r/
 
 With the above Docker image a GitHub Action has been created in order to run ASK CLI Commands:
 
-These GitHub Action is available in the gitHub Actions Marketplace](https://github.com/marketplace/actions/alexa-ask-aws-cli-action)
+This GitHub Action is available in the gitHub Actions Marketplace](https://github.com/marketplace/actions/alexa-ask-aws-cli-action)
 
 You can use the following example as a way to start:
 ```yaml
@@ -160,6 +160,8 @@ You can use the following example as a way to start:
     run: echo "The result was ${{ steps.command.outputs.result }}"
 
 ```
+
+It is important to add that the GiHub Action are using the latest version of the ASK CLI.
 
 ## Links:
 
