@@ -134,6 +134,33 @@ Currently there are the versions available:
 
 These versions are available in my [DockerHub profile](https://hub.docker.com/r/xavidop/alexa-ask-aws-cli/tags)
 
+# GitHub Action
+
+With the above Docker image a GitHub Action has been created in order to run ASK CLI Commands:
+
+These GitHub Action is available in the gitHub Actions Marketplace](https://github.com/marketplace/actions/alexa-ask-aws-cli-action)
+
+You can use the following example as a way to start:
+```yaml
+
+  - name: Alexa ASK AWS CLI Action
+    uses:  xavidop/alexa-ask-aws-cli-docker@v1.0.2
+    id: command
+    with:
+      command: 'ask --version'
+    env: # Or as an environment variable
+      ASK_ACCESS_TOKEN: ${{ secrets.ASK_ACCESS_TOKEN }}
+      ASK_REFRESH_TOKEN: ${{ secrets.ASK_REFRESH_TOKEN }}
+      ASK_VENDOR_ID: ${{ secrets.ASK_VENDOR_ID }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      SKILL_ID: ${{ secrets.SKILL_ID }}
+  # Use the output from the `hello` step
+  - name: Get the output
+    run: echo "The result was ${{ steps.command.outputs.result }}"
+
+```
+
 ## Links:
 
 - [ASK CLI Quickstart](https://developer.amazon.com/docs/smapi/quick-start-alexa-skills-kit-command-line-interface.html)

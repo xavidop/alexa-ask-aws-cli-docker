@@ -1,0 +1,26 @@
+on: [push]
+
+jobs:
+  test-action:
+    runs-on: ubuntu-latest
+    name: Test Action
+    steps:
+      # To use this repository's private action,
+      # you must check out the repository
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Test action step
+        uses: ./ # Uses an action in the root directory
+        id: command
+        with:
+         command: 'ask --version'
+        env: # Or as an environment variable
+          ASK_ACCESS_TOKEN: ${{ secrets.ASK_ACCESS_TOKEN }}
+          ASK_REFRESH_TOKEN: ${{ secrets.ASK_REFRESH_TOKEN }}
+          ASK_VENDOR_ID: ${{ secrets.ASK_VENDOR_ID }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          SKILL_ID: ${{ secrets.SKILL_ID }}
+      # Use the output from the `hello` step
+      - name: Get the output
+        run: echo "The result was ${{ steps.command.outputs.result }}"

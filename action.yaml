@@ -5,6 +5,14 @@ description: 'Github Action using Docker image for ASK and AWS CLI '
 branding:
   icon: 'activity'  
   color: 'blue'
+inputs:
+  command:  # id of input
+    description: 'Command to execute'
+    required: true
+    default: 'ask --version'
+outputs:
+  result: # id of output
+    description: 'The result of the command'
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: 'Dockerfile.action'
