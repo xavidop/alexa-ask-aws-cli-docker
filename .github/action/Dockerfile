@@ -2,8 +2,8 @@
 FROM xavidop/alexa-ask-aws-cli:latest
 LABEL maintainer="Xavier Portilla Edo <xavierportillaedo@gmail.com>"
 
-ADD --chown=node:node entrypoint.sh ./entrypoint.sh
+ADD --chown=node:node entrypoint.sh /home/node/entrypoint.sh
 
-RUN chmod +X ./entrypoint.sh
+RUN chmod +X /home/node/entrypoint.sh
 
-ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT ["./home/node/entrypoint.sh"]
