@@ -1,5 +1,4 @@
 #!/bin/sh -l
 
-eval $1 > out.log
-result=$(echo out.log)
+result=$(eval $1)
 echo "::set-output name=result::$result"
