@@ -144,7 +144,7 @@ You can use the following example as a way to start:
 ```yaml
 
   - name: Alexa ASK AWS CLI Action
-    uses: xavidop/alexa-ask-aws-cli-docker@v1.0.5
+    uses: xavidop/alexa-ask-aws-cli-docker@v1.0.6
     id: command
     with:
       command: 'ask --version'
@@ -158,6 +158,38 @@ You can use the following example as a way to start:
   # Use the output from the `hello` step
   - name: Get the output
     run: echo "The result was ${{ steps.command.outputs.result }}"
+
+```
+
+Or for example using it in a workflow:
+
+```yaml
+  on: [push]
+
+  jobs:
+    test-action:
+      runs-on: ubuntu-latest
+      name: Test Action
+      steps:
+        # To use this repository's private action,
+        # you must check out the repository
+        - name: Checkout
+          uses: actions/checkout@v2
+        - name: Test action step
+          uses: xavidop/alexa-ask-aws-cli-docker@v1.0.6
+          id: ask
+          with:
+            command: 'ask --version'
+          env: # Or as an environment variable
+            ASK_ACCESS_TOKEN: ${{ secrets.ASK_ACCESS_TOKEN }}
+            ASK_REFRESH_TOKEN: ${{ secrets.ASK_REFRESH_TOKEN }}
+            ASK_VENDOR_ID: ${{ secrets.ASK_VENDOR_ID }}
+            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            SKILL_ID: ${{ secrets.SKILL_ID }}
+        # Use the output from the `hello` step
+        - name: Get the output
+          run: echo "The result was ${{ steps.ask.outputs.result }}"
 
 ```
 
