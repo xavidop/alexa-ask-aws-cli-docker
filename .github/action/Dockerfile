@@ -6,4 +6,4 @@ ADD --chown=node:node entrypoint.sh /home/node/entrypoint.sh
 
 RUN chmod +X /home/node/entrypoint.sh
 
-ENTRYPOINT ["./home/node/entrypoint.sh"]
+ENTRYPOINT ["/home/node/entrypoint.sh"]
