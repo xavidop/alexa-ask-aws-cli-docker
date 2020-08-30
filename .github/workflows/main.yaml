@@ -10,7 +10,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Test action step
-        uses: xavidop/alexa-ask-aws-cli-docker@v1.0.4
+        uses: xavidop/alexa-ask-aws-cli-docker@v1.0.5
         id: ask
         with:
           command: 'ask --version'
