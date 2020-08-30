@@ -6,7 +6,7 @@ branding:
   icon: 'activity'  
   color: 'blue'
 inputs:
-  command:  # id of input
+  exec:  # id of input
     description: 'Command to execute'
     required: true
     default: 'ask --version'

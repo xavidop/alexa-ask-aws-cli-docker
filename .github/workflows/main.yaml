@@ -10,10 +10,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Test action step
-        uses: xavidop/alexa-ask-aws-cli-docker@v1.0.5
+        uses: ./
         id: ask
         with:
-          command: 'ask --version'
+          exec: 'ask --version'
       # Use the output from the `hello` step
       - name: Get the output
         run: echo "The result was ${{ steps.ask.outputs.result }}"
