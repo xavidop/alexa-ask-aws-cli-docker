@@ -10,7 +10,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Test action step
-        uses: ./.github/action/ # Uses an action in the root directory
+        uses: xavidop/alexa-ask-aws-cli-docker@v1.0.3
         id: ask
         with:
           command: 'ask --version'
