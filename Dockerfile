@@ -1,7 +1,7 @@
 # Original source from https://hub.docker.com/_/node/
 FROM node:lts-alpine
 LABEL maintainer="Xavier Portilla Edo <xavierportillaedo@gmail.com>"
-ARG ASK_CLI_VERSION=2.15.0
+ARG ASK_CLI_VERSION=2.21.0
 
 ENV CLI_VERSION @${ASK_CLI_VERSION}
 
@@ -20,7 +20,11 @@ RUN apk add --update \
   bash \
   zip \
   git \
-  py-pip
+  py-pip \
+  curl \
+  wget \
+  vim \
+  openssh
 
 # See https://github.com/nodejs/docker-node/issues/603
 # ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
