@@ -126,11 +126,12 @@ docker push xavidop/alexa-ask-aws-cli:2.0
 
 Currently there are the versions available:
 * 1.0: this image is running the latest version of ASK CLI v1 (1.7.23)
-* 2.0: this image is running the latest version of ASK CLI v2 (2.13.0)
+* 2.0: this image is running the latest version of ASK CLI v2 (2.21.0)
   * 2.12.0: this image is running the 2.12.0 version of ASK CLI
   * 2.13.0: this image is running the 2.13.0 version of ASK CLI
   * 2.15.0: this image is running the 2.15.0 version of ASK CLI
-* latest: this image is running the latest version of ASK CLI (2.15.0)
+  * 2.21.0: this image is running the 2.21.0 version of ASK CLI
+* latest: this image is running the latest version of ASK CLI (2.21.0)
 
 These versions are available in my [DockerHub profile](https://hub.docker.com/r/xavidop/alexa-ask-aws-cli/tags)
 
